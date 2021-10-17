@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0-rc.1'>
+    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0-alpha.5'>
   <meta name="generator" content="Hexo 5.4.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2021/10/16/hello-world/"/>
+  <link rel="canonical" href="http://example.com/2021/10/17/seata/"/>
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,39 +20,30 @@
   <meta content="达达的个人博客" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1634399506545" as="style">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/style.css?time=1634458992772" as="style">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/inkss/common@1/fonts/canva/SentyGoldenBell.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>Hello World - 达达的个人博客</title>
+  <title>达达的个人博客</title>
   <meta name="keywords" content="null">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="SEATA一、分布式事物基础1.CAP2.强一致性和弱一致性强一致性 系统中的某个数据被成功更新后，后续任何对该数据的读取操作都讲得到更新后的值；也成为原子一致性，线性一致性  两个要求: 任何一次读都能读到某个数据的最近一次写的数据 系统中的所有进程，看到的操作顺序，都和全局时钟下的顺序一致。  在任意时刻，所有节点的数据是一样的。例如，对于关系型数据库，要求更新过的数据能被后续的访问都能看到，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2021/10/16/hello-world/index.html">
+<meta property="og:title" content="达达的个人博客">
+<meta property="og:url" content="http://example.com/2021/10/17/SEATA/index.html">
 <meta property="og:site_name" content="达达的个人博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="SEATA一、分布式事物基础1.CAP2.强一致性和弱一致性强一致性 系统中的某个数据被成功更新后，后续任何对该数据的读取操作都讲得到更新后的值；也成为原子一致性，线性一致性  两个要求: 任何一次读都能读到某个数据的最近一次写的数据 系统中的所有进程，看到的操作顺序，都和全局时钟下的顺序一致。  在任意时刻，所有节点的数据是一样的。例如，对于关系型数据库，要求更新过的数据能被后续的访问都能看到，">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2021-10-16T14:07:51.800Z">
-<meta property="article:modified_time" content="2021-10-16T14:07:51.800Z">
+<meta property="article:published_time" content="2021-10-16T16:44:41.903Z">
+<meta property="article:modified_time" content="2021-10-16T07:11:57.494Z">
 <meta property="article:author" content="达达">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
   <!-- import meta -->
-      <meta name="msapplication-TileColor" content="#ffffff">
-      <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/browserconfig.xml">
-      <meta name="theme-color" content="#ffffff">
   <!-- link -->
   <!-- import link -->
-      <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png">
-      <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/favicon-32x32.png">
-      <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/favicon-16x16.png">
-      <link rel="manifest" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/site.webmanifest">
-      <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/safari-pinned-tab.svg" color="#5bbad5">
-      <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/favicon.ico">
   <style>
     /* 首屏样式 */
     #safearea {
@@ -515,7 +506,7 @@ button {
   margin-top: 32px;
 }
 .cover-wrapper .cover-body .title {
-  font-family: "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
+  font-family: "SentyGoldenBell", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
   font-size: 3.125rem;
   line-height: 1.2;
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
@@ -829,6 +820,152 @@ button {
     backdrop-filter: saturate(200%) blur(20px);
   }
 }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: 'dark';
+  }
+  :root:not([color-scheme]) {
+    --color-site-body: #000;
+    --color-read-bkg: #222;
+    --color-read-post: #333;
+    --color-site-bg: #222;
+    --color-site-inner: #eee;
+    --color-site-footer: #aaa;
+    --color-card: #333;
+    --color-text: #eee;
+    --color-block: #3a3a3a;
+    --color-codeblock: #343a3c;
+    --color-inlinecode: #d56d28;
+    --color-h1: #eee;
+    --color-h2: #eee;
+    --color-h3: #ddd;
+    --color-h4: #ddd;
+    --color-h5: #ddd;
+    --color-h6: #ddd;
+    --color-p: #bbb;
+    --color-list: #aaa;
+    --color-list-hl: #69dfc4;
+    --color-meta: #888;
+    --color-link: #888;
+  }
+  :root:not([color-scheme]) img {
+    filter: brightness(70%) !important;
+  }
+  :root:not([color-scheme]) #wrapper .title {
+    color: var(--color-meta) !important;
+  }
+  :root:not([color-scheme]) .l_header ul.nav-list-h>li>a,
+  :root:not([color-scheme]) ul.list-v >li>a {
+    color: var(--color-list) !important;
+  }
+  :root:not([color-scheme]) .blur {
+    background: var(--color-site-bg) !important;
+  }
+  :root:not([color-scheme]) .nav-main .u-search-input {
+    background: var(--color-card) !important;
+  }
+  :root:not([color-scheme]) #l_main .article .prev-next>a {
+    background: var(--color-block) !important;
+  }
+  :root:not([color-scheme]) #l_main .article .prev-next>a:hover {
+    background: var(--color-card) !important;
+  }
+  :root:not([color-scheme]) .article blockquote {
+    background: var(--color-block) !important;
+  }
+  :root:not([color-scheme]) .article-title a {
+    color: var(--color-h1) !important;
+  }
+  :root:not([color-scheme]) details>summary {
+    color: var(--color-p) !important;
+    background: var(--color-site-bg) !important;
+  }
+  :root:not([color-scheme]) details {
+    border: 1px solid var(--color-site-bg) !important;
+    background: var(--color-site-bg) !important;
+  }
+  :root:not([color-scheme]) #u-search .modal,
+  :root:not([color-scheme]) #u-search .modal-header,
+  :root:not([color-scheme]) #u-search .modal-body {
+    background: var(--color-card) !important;
+  }
+  :root:not([color-scheme]) #u-search .modal-body .modal-results .result:hover {
+    background: var(--color-block) !important;
+  }
+}
+[color-scheme='dark'] {
+  --color-site-body: #000;
+  --color-read-bkg: #222;
+  --color-read-post: #333;
+  --color-site-bg: #222;
+  --color-site-inner: #eee;
+  --color-site-footer: #aaa;
+  --color-card: #333;
+  --color-text: #eee;
+  --color-block: #3a3a3a;
+  --color-codeblock: #343a3c;
+  --color-inlinecode: #d56d28;
+  --color-h1: #eee;
+  --color-h2: #eee;
+  --color-h3: #ddd;
+  --color-h4: #ddd;
+  --color-h5: #ddd;
+  --color-h6: #ddd;
+  --color-p: #bbb;
+  --color-list: #aaa;
+  --color-list-hl: #69dfc4;
+  --color-meta: #888;
+  --color-link: #888;
+}
+[color-scheme='dark'] img {
+  filter: brightness(70%) !important;
+}
+[color-scheme='dark'] #wrapper .title {
+  color: var(--color-meta) !important;
+}
+[color-scheme='dark'] .l_header ul.nav-list-h>li>a,
+[color-scheme='dark'] ul.list-v >li>a {
+  color: var(--color-list) !important;
+}
+[color-scheme='dark'] .blur {
+  background: var(--color-site-bg) !important;
+}
+[color-scheme='dark'] .nav-main .u-search-input {
+  background: var(--color-card) !important;
+}
+[color-scheme='dark'] #l_main .article .prev-next>a {
+  background: var(--color-block) !important;
+}
+[color-scheme='dark'] #l_main .article .prev-next>a:hover {
+  background: var(--color-card) !important;
+}
+[color-scheme='dark'] .article blockquote {
+  background: var(--color-block) !important;
+}
+[color-scheme='dark'] .article-title a {
+  color: var(--color-h1) !important;
+}
+[color-scheme='dark'] details>summary {
+  color: var(--color-p) !important;
+  background: var(--color-site-bg) !important;
+}
+[color-scheme='dark'] details {
+  border: 1px solid var(--color-site-bg) !important;
+  background: var(--color-site-bg) !important;
+}
+[color-scheme='dark'] #u-search .modal,
+[color-scheme='dark'] #u-search .modal-header,
+[color-scheme='dark'] #u-search .modal-body {
+  background: var(--color-card) !important;
+}
+[color-scheme='dark'] #u-search .modal-body .modal-results .result:hover {
+  background: var(--color-block) !important;
+}
+@media screen and (max-width: 500px) {
+  [color-scheme='dark'] .l_header .m_search {
+    background: var(--color-site-bg) !important;
+  }
+}
 @font-face {
   font-family: 'UbuntuMono';
   src: url("https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf");
@@ -837,8 +974,8 @@ button {
   font-display: swap;
 }
 @font-face {
-  font-family: 'Varela Round';
-  src: url("https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf");
+  font-family: 'SentyGoldenBell';
+  src: url("https://cdn.jsdelivr.net/gh/inkss/common@1/fonts/canva/SentyGoldenBell.woff2");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -961,7 +1098,7 @@ button {
   line-height: 64px;
   padding: 0 24px;
   font-size: 1.25rem;
-  font-family: "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
+  font-family: "SentyGoldenBell", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
 }
 .l_header #wrapper .nav-main .title img {
   height: 64px;
@@ -1665,10 +1802,21 @@ ul.list-v >li>a:hover {
     padding: 0px;
   }
 }
+@media screen and (prefers-color-scheme: dark) and (max-width: 500px) {
+  .l_header .m_search {
+    background: var(--color-site-bg) !important;
+  }
+}
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1634399506545" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1634399506545"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1634458992772" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1634458992772"></noscript>
+    <script>
+      var userColorScheme=localStorage.getItem("color-scheme")
+      if(userColorScheme){
+        document.documentElement.setAttribute("color-scheme", userColorScheme);
+      }
+    </script>
   
 <script>
 if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
@@ -2359,14 +2507,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
       <div id="none" class='cover-wrapper post dock' style="display: none;">
         
-  <div class='cover-bg lazyload placeholder' data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div>
+  <div class='cover-bg lazyload placeholder' data-bg="image/bg.jpg"></div>
 
 <div class='cover-body'>
   <div class='top'>
     
     
-      <p class="title">Volantis</p>
+      <p class="title">汪子达</p>
     
+    
+      <p class="subtitle">吾法念无念念，行无行行，言无言言，修无修修</p>
     
   </div>
   <div class='bottom'>
@@ -2379,41 +2529,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
               active-action="action-v4getting-started">
               <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg' alt="This is a picture without description" ><p>文档</p>
-            </a>
-          
-            <a href="/faqs/"
-              
-              
-              active-action="action-faqs">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg' alt="This is a picture without description" ><p>帮助</p>
-            </a>
-          
-            <a href="/examples/"
-              
-              
-              active-action="action-examples">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg' alt="This is a picture without description" ><p>示例</p>
-            </a>
-          
-            <a href="/contributors/"
-              
-              
-              active-action="action-contributors">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg' alt="This is a picture without description" ><p>社区</p>
-            </a>
-          
-            <a href="/archives/"
-              
-              
-              active-action="action-archives">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg' alt="This is a picture without description" ><p>博客</p>
-            </a>
-          
-            <a target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/"
-              
-              
-              active-action="action-https:githubcomvolantis-xhexo-theme-volantis">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg' alt="This is a picture without description" ><p>源码</p>
             </a>
           
         
@@ -2433,7 +2548,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/16/hello-world/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/17/SEATA/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="达达的个人博客">
   </span>
@@ -2449,65 +2564,153 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-      <h1 class="title" itemprop="name headline">
-        Hello World
-      </h1>
-      <div class='new-meta-box'>
+      <span hidden itemprop="name headline">
         
-          
-            
-<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <a itemprop="url" class='author' href="/" rel="nofollow">
-    " class="lazyload" data-srcset="" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==<img itemprop="image" src="" alt="This is a picture without description" >
-    <p itemprop="name">请设置文章作者</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-10-16T22:07:51+08:00">
-  <a class='notlink' href="/" onclick="return false;" title="Click me!" >
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2021年10月16日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-        <!-- Custom Files topMeta begin-->
-        
-        <!-- Custom Files topMeta end-->
-      </div>
+      </span>
     
   </div>
 
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><div class="story post-story"><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <h1 id="SEATA"><a href="#SEATA" class="headerlink" title="SEATA"></a>SEATA</h1><h2 id="一、分布式事物基础"><a href="#一、分布式事物基础" class="headerlink" title="一、分布式事物基础"></a>一、分布式事物基础</h2><div class="story post-story"><h3 id="1-CAP"><a href="#1-CAP" class="headerlink" title="1.CAP"></a>1.CAP</h3><h3 id="2-强一致性和弱一致性"><a href="#2-强一致性和弱一致性" class="headerlink" title="2.强一致性和弱一致性"></a>2.强一致性和弱一致性</h3><h4 id="强一致性"><a href="#强一致性" class="headerlink" title="强一致性"></a>强一致性</h4><blockquote>
+<p>系统中的某个数据被成功更新后，后续任何对该数据的读取操作都讲得到更新后的值；也成为<code>原子一致性</code>，<code>线性一致性</code></p>
+</blockquote>
+<h5 id="两个要求"><a href="#两个要求" class="headerlink" title="两个要求:"></a>两个要求:</h5><ul>
+<li>任何一次读都能读到某个数据的最近一次写的数据</li>
+<li>系统中的所有进程，看到的操作顺序，都和全局时钟下的顺序一致。</li>
+</ul>
+<p>在任意时刻，所有节点的数据是一样的。例如，对于关系型数据库，要求更新过的数据能被后续的访问都能看到，这就是强一致性</p>
+<h5 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h5><ul>
+<li>一个集群需要对外部提供强一致性，所以只需要集群内部某台服务器的数据法生了改变，那么就要等等集群内其他服务器的数据同步完成后，才能正常的对外提供服务。</li>
+<li>保证强一致性，务必会损耗可用性</li>
+</ul>
+<h4 id="弱一致性"><a href="#弱一致性" class="headerlink" title="弱一致性"></a>弱一致性</h4><blockquote>
+<p>系统中的某个数据被更新后，后续对该数据的读取操作可能得到更新后的值，也可能是更改前的值。</p>
+<p>但即使过了”不一致时间窗口“这段时间后，后续对该数据的读取也不一定是最新的；</p>
+<p>所以说，可以理解为数据更新后，如果能容忍后续的访问只能访问到部分或者全部访问不到，则是弱一致性。如12306购买</p>
+</blockquote>
+<h4 id="最终一致性"><a href="#最终一致性" class="headerlink" title="最终一致性"></a>最终一致性</h4><blockquote>
+<p>是弱一致性的特殊形式，存储系统保证在没有新的更新的条件下，最终所有的访问都是最后更新的值。    </p>
+<p>不保证在任意时刻任意节点的同一份数据都是相同的，但是随着时间的迁移，不同节点上的同一份数据总是在向趋同的方向变化 ，就是在一段时间后，节点间的数据会最终达到一致状态   </p>
+</blockquote>
+<h3 id="3-Base理论"><a href="#3-Base理论" class="headerlink" title="3.Base理论"></a>3.Base理论</h3><ul>
+<li>BA：Basic Available <span style= 'color:white;background:green'>基本可用</span><ul>
+<li>整个系统在某些不可抗的情况下，仍然能够保证<code>可用性</code>，即一定时间内仍然能够返回一个明确的结果。<ul>
+<li>“一定时间”可以适当延长，当举行大促时，响应时间可以适当延长</li>
+<li>给部分用户返回一个降级页面，给部分用户直接返回一个降级页面，从而缓解服务器压力。但是是注意，返回降级页面仍然是返回明确结果。例：商品抢购10个，服务器支撑500人，后面的人返回降级页面</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>S：Soft State <span style='color:white;background:green'>柔性状态</span>  <ul>
+<li>是指允许系统中的数据存在中间状态，并认为该中间状态的存在不会影响系统的整体可用性，即允许系统不同节点的数据副本之间进行数据同步的过程存在延时。</li>
+</ul>
+</li>
+<li>E：Eventual Consisstency <span style='color:white;background:green'>最终一致性</span><ul>
+<li>同一数据的不同副本状态，可以不需要实时一致，但一定要保证经过一定时间后是一致的</li>
+</ul>
+</li>
+</ul>
+<p>Base理论是根据CAP中的一致性和可用性进行一个权衡的结果，理论的核心思想就是：我们无法做到强一致，但每个应用都可用根据自身的业务特点，采用适当的方式来使系统达到最终一致性</p>
+<h3 id="分布式事物协议"><a href="#分布式事物协议" class="headerlink" title="分布式事物协议"></a>分布式事物协议</h3><blockquote>
+<p><span style='color:green'>背景</span></p>
+<p>在分布式系统里，每个节点都可以知晓自己操作的成功或者失败，却无法知道其他节点操作的成功或失败，当一个事物跨多个节点时，为了保持事物的原子性与一致性，而引入一个协调者来统一掌控所有参与者的操作结果，并指示他们是否把操作结果进行真正的提交或者回滚</p>
+</blockquote>
+<h4 id="二阶段提交-2PC"><a href="#二阶段提交-2PC" class="headerlink" title="二阶段提交  2PC"></a>二阶段提交  <span style='color:white;background:green'>2PC</span></h4><p>二阶段提交协议是常用的分布式事物解决方案，即将事物的提交过程分为两个阶段来进行处理</p>
+<h5 id="阶段"><a href="#阶段" class="headerlink" title="阶段"></a>阶段</h5><ul>
+<li>准备阶段</li>
+<li>提交阶段</li>
+</ul>
+<h5 id="参与角色"><a href="#参与角色" class="headerlink" title="参与角色"></a>参与角色</h5><ul>
+<li>协调者：事物的发起者</li>
+<li>参与者：事务的执行者</li>
+</ul>
+<h5 id="第一阶段-投票阶段"><a href="#第一阶段-投票阶段" class="headerlink" title="第一阶段 投票阶段"></a>第一阶段 <span style='color:white;background:green'>投票阶段</span></h5><p>1.协调者向所有参与者发送事物内容，询问是否可以提交事物，并等待答复</p>
+<p>2.各参与者执行事物操作，将undo和redo信息计入事物日志中（但不提事物）</p>
+<p>3.如果参与者执行，给协调者反馈<strong>同意</strong>，否则反馈<strong>终止</strong>  </p>
+<h5 id="2-第二阶段-提交执行阶段"><a href="#2-第二阶段-提交执行阶段" class="headerlink" title="2.第二阶段 提交执行阶段"></a>2.第二阶段 <span style='color:white;background:green'>提交执行阶段</span></h5><p>当协调者从所有参与者节点获得相应消息都为同意时：</p>
+<p>1.协调者节点向所有参与者节点发出<strong>正式提交（<code>commit</code>）</strong>的请求</p>
+<p>2.参与者正式完成操作，并释放在整个事物期间内占用的资源</p>
+<p>3.参与者节点向协调者节点发送ack完成消息</p>
+<p>4.协调者收到所有参与者反馈的ack完成消息后，完成事物</p>
+<p>如果任一参与者节点在第一节点返回响应消息为终止，或协调者节点在第一阶段的询问超时前无法获取所有参与者节点的响应消息时：</p>
+<p>1.协调者节点向所有参与者节点发出<strong>回滚（<code>rollback</code>）</strong>的请求</p>
+<p>2.参与者节点利用阶段1写入undo信息执行回滚，并释放在整个事物期间内占用的资源。</p>
+<p>3.参与者节点向协调者节点发送ack回滚完成消息</p>
+<p>4.协调者在节点收到所有参与者节点反馈的ack回滚完成消息后，取消事物。</p>
+<p>不管最后结果如何，第二阶段都会结束当前事物。</p>
+<h5 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h5><p>1.性能问题：执行过程中，所有参与节点都是事物阻塞型的。当参与者占用公共资源时，其他第三方节点访问公共资源不得不处于阻塞状态</p>
+<p>2.可靠性问题：参与者发送故障，协调者需要给每个参与者额外指定超时机制，超时后整个事物失败。协调者发生故障，参与者会一直阻塞下去。需要额外的备机进行容错。</p>
+<p>3.数据一致性问题：二阶段无法解决的问题：协调者在发出<code>commit</code>消息后宕机，而唯一接受到这条消息的参与者也同时宕机，那么即使协调者通过选举协议产生了新的协调者，这条事物的状态也是不确定的，无法确定事物是否已经被提交</p>
+<blockquote>
+<p>缺点：实现复杂，牺牲了可用性，对性能影响较大，不适合高并发高性能场景</p>
+</blockquote>
+<blockquote>
+<p>优点：尽量保证了数据的强一致，适合对数据强一致要求很高的关键领域</p>
+</blockquote>
+<h4 id="三阶段提交-3PC"><a href="#三阶段提交-3PC" class="headerlink" title="三阶段提交 3PC"></a>三阶段提交 <span style='color:white;background:green'>3PC</span></h4><p>三阶段提交协议是对二阶段提交协议的改进版本，三阶段提交有两个改动点：</p>
+<ul>
+<li>在协调者和参与者都引入超时机制</li>
+<li>在第一阶段和第二阶段都插入了一个准备阶段，保证了在最后提交阶段之前各参与节点状态是一致的。</li>
+</ul>
+<p><code>3PC</code>把<code>2PC</code>的准备阶段再次一分为二，这样三阶段提交就有 <code>CanCommit</code>，<code>PreCommit</code>，<code>Docommit</code> 三个阶段。</p>
+<p> <img src="C:\Users\81997\AppData\Roaming\Typora\typora-user-images\image-20211016141640548.png" class="lazyload" data-srcset="C:\Users\81997\AppData\Roaming\Typora\typora-user-images\image-20211016141640548.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211016141640548"></p>
+<p><img src="C:\Users\81997\AppData\Roaming\Typora\typora-user-images\image-20211016141651760.png" class="lazyload" data-srcset="C:\Users\81997\AppData\Roaming\Typora\typora-user-images\image-20211016141651760.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211016141651760"></p>
+<h5 id="1-第一阶段-CanCommit阶段"><a href="#1-第一阶段-CanCommit阶段" class="headerlink" title="1.第一阶段: CanCommit阶段"></a>1.第一阶段: <code>CanCommit阶段</code></h5><p>3PC<code>CanCommit</code>阶段和2PC的准备阶段很像。协调者      向各个参与者发送<code>commit</code>请求，参与者如果可用提交事物就返回yea，否则返回no响应。</p>
+<ul>
+<li>事物询问：协调者向所有参与者发出包含事物内容的<code>CanCommit</code>请求，询问是否可以提交事物，并等待所有参与者答复。</li>
+<li>响应反馈：参与者收到<code>CanCommit</code>请求后，如果认为可以执行事物操作则反馈yes并进入预备状态，否则返回no。</li>
+</ul>
+<h5 id="2-第二阶段-PreCommit阶段"><a href="#2-第二阶段-PreCommit阶段" class="headerlink" title="2.第二阶段 PreCommit阶段"></a>2.第二阶段 <code>PreCommit阶段</code></h5><p>协调者根据参与者的反应情况来决定是否可以进行事物的<code>PreCommit</code>操作，根据响应情况，有以下两种情况：</p>
+<ul>
+<li>假如所有参与者均反馈yes。协调者预执行事物。<ul>
+<li>发送预提交请求：协调者向参与者发送<code>PreCommit</code>请求，并进入准备阶段</li>
+<li>事物预提交：参与者接受到<code>PreCommit</code>请求后，会执行事物操作，并将<code>undo</code>和<code>redo</code>信息记录到事物日志中（但不提交事物）</li>
+<li>响应反馈：如果参与者成功的执行了事物操作，则返回ack响应，同时开始等待最终指令。</li>
+</ul>
+</li>
+<li>假如有任何一个参与者向协调者发送了no，或者等待超时后，协调者都没有接受到参与者的响应，那么就执行事物的中断<ul>
+<li>1.发送中断请求：协调者向所有参与者发送<code>abort</code>请求</li>
+<li>2.中断事物：参与者收到来着协调者的<code>abort</code>请求后，或者超时后仍未收到协调者的请求，执行事物中断。</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-第三阶段-DoCommit阶段"><a href="#3-第三阶段-DoCommit阶段" class="headerlink" title="3.第三阶段 DoCommit阶段"></a>3.第三阶段 <code>DoCommit阶段</code></h5><blockquote>
+<p>注意：进入第三阶段后，无论协调者出现问题，还是协调者或者参与者网络出现问题，都会导致参与者无法接收到协调者发出的<code>DoCommit</code>请求或者<code>abort</code>请求。此时参与者都会在等待超时之后，继续执行事物提交。</p>
+</blockquote>
+<ul>
+<li><p>执行提交：</p>
+<p>所有参与者均反馈ack响应，执行真正的事物提交</p>
+<ul>
+<li>发送提交请求：协调者接收到参与者发送的ack响应，那么它将从预提交状态进入提交状态，并向所有参与者发送<code>DoCommit</code>请求</li>
+<li>事物提交：参与者收到<code>Docommit</code>请求后，执行正式的事物提交，并在完成事物提交之后释放掉所有事物资源。</li>
+<li>响应反馈：事物提交完成之后，向协调者发送ack响应</li>
+<li>完成事物：协调者接受到所有参与者的ack响应之后，完成事物。</li>
+</ul>
+</li>
+<li><p>中断事物</p>
+<p>任何一个参与者反馈no，或者等待超时后协调者仍没收到所有参与者的反馈，即中断事物</p>
+<ul>
+<li>发送中断请求：如果协调者处于工作状态，向所有参与者发送<code>abort</code>请求</li>
+<li>事物回滚：参与者收到<code>abort</code>请求后，利用其在第二阶段记录的<code>undo</code>信息来执行事务的回滚操作，并在完成回滚之后释放所有的事物资源</li>
+<li>反馈结果：参与者完成事物回滚后，向协调者反馈ack消息</li>
+<li>中断事物：协调者接收带参与者反馈的ack消息之后，执行事物的中断</li>
+</ul>
+<blockquote>
+<p>注意</p>
+<p>在<code>DoCommit</code>阶段，如果参与者无法及时接受到来自协调者的<code>DoCommit</code>请求，会在等待超时之后，会继续进行事物的提交。（其实这个应该是基于概率来决定的，当进入第三阶段时，说明参与者在第二阶段已经收到了<code>PreCommit</code>请求，那么协调者生产<code>PreCommit</code>请求的前提条件是在第二阶段开始前，收到了所有参与者的<code>CanCommit</code>响应都是yes）</p>
+<p>一旦参与者收到了<code>PreCommit</code>，意味着他知道大家其实都同意修改了</p>
+<p>所以，进入第三阶段时，由于网络超时等原因导致，参与者没有收到commit或abort，但是他有理由相信:成功提交的几率是很大的</p>
+</blockquote>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><blockquote>
+<p>优点：相比较二阶段提交，三阶段提交降低了阻塞范围，在等待超时后协调者或者参与者会中断事物。避免了协调者单点问题，阶段3中协调者出现问题，参与者会继续提交事物</p>
+</blockquote>
+<blockquote>
+<p>缺点：数据不一致问题依然存在，当在参与者收到<code>PreCommit</code>请求后等待<code>DoCommit</code>指令时，此时如果协调者请求中断事物，而协调者无法与参与者正常通信，会导致参与者继续提交事物，造成数据不一致</p>
+</blockquote>
+</li>
+</ul>
 
 </div>
   </div>
@@ -2527,7 +2730,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=http://example.com/2021/10/16/hello-world/>http://example.com/2021/10/16/hello-world/</a></p>
+                <p>本文永久链接是：<a href=http://example.com/2021/10/17/SEATA/>http://example.com/2021/10/17/SEATA/</a></p>
               
             
           </blockquote>
@@ -2544,7 +2747,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-10-16T22:07:51+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-10-16T15:11:57+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年10月16日</p>
@@ -2566,7 +2769,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/10/16/hello-world/&title=Hello World - 达达的个人博客&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/10/17/SEATA/&title= - 达达的个人博客&summary="
           
           >
           
@@ -2578,7 +2781,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/10/16/hello-world/&title=Hello World - 达达的个人博客&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/10/17/SEATA/&title= - 达达的个人博客&summary="
           
           >
           
@@ -2590,7 +2793,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/10/16/hello-world/&title=Hello World - 达达的个人博客&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/10/17/SEATA/&title= - 达达的个人博客&summary="
           
           >
           
@@ -2632,7 +2835,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <article class="post white-box reveal shadow" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2021/10/16/hello-world/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2021/10/17/SEATA/index.html#comments">
     </span>
     <p ct><i class='fas fa-comments'></i> 评论</p>
     
@@ -2665,7 +2868,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E5%9F%BA%E7%A1%80"><span class="toc-text">一、分布式事物基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CAP"><span class="toc-text">1.CAP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BC%BA%E4%B8%80%E8%87%B4%E6%80%A7%E5%92%8C%E5%BC%B1%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">2.强一致性和弱一致性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%BA%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">强一致性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E8%A6%81%E6%B1%82"><span class="toc-text">两个要求:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">总结：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%B1%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">弱一致性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">最终一致性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Base%E7%90%86%E8%AE%BA"><span class="toc-text">3.Base理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E5%8D%8F%E8%AE%AE"><span class="toc-text">分布式事物协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4-2PC"><span class="toc-text">二阶段提交  2PC</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5"><span class="toc-text">阶段</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E4%B8%8E%E8%A7%92%E8%89%B2"><span class="toc-text">参与角色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5-%E6%8A%95%E7%A5%A8%E9%98%B6%E6%AE%B5"><span class="toc-text">第一阶段 投票阶段</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5-%E6%8F%90%E4%BA%A4%E6%89%A7%E8%A1%8C%E9%98%B6%E6%AE%B5"><span class="toc-text">2.第二阶段 提交执行阶段</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4-3PC"><span class="toc-text">三阶段提交 3PC</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5-CanCommit%E9%98%B6%E6%AE%B5"><span class="toc-text">1.第一阶段: CanCommit阶段</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5-PreCommit%E9%98%B6%E6%AE%B5"><span class="toc-text">2.第二阶段 PreCommit阶段</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5-DoCommit%E9%98%B6%E6%AE%B5"><span class="toc-text">3.第三阶段 DoCommit阶段</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
   </section>
 
@@ -2716,8 +2919,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=true;
-  pdata.postTitle="Hello World";
+  pdata.ispage=false;
+  pdata.postTitle="";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2780,7 +2983,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       
         本站使用
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0-rc.1" target="_blank" class="codename">Volantis</a>
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/dev" target="_blank" class="codename">Volantis</a>
         作为主题
       
     
@@ -2831,8 +3034,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1634399506545')
-      volantis.js('/js/message.js?time=1634399506545', () => {
+      volantis.css('/css/message.css?time=1634458992772')
+      volantis.js('/js/message.js?time=1634458992772', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -2877,8 +3080,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1634399506545')
-      volantis.js('/js/message.js?time=1634399506545', () => {
+      volantis.css('/css/message.css?time=1634458992772')
+      volantis.js('/js/message.js?time=1634458992772', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -2937,8 +3140,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1634399506545')
-      volantis.js('/js/message.js?time=1634399506545', () => {
+      volantis.css('/css/message.css?time=1634458992772')
+      volantis.js('/js/message.js?time=1634458992772', () => {
         hideMessage(done);
       });
     } else {
@@ -3140,12 +3343,26 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
       
         
+          
+    <li class="menuLoad-Content">
+      <a class='vlts-menu fix-cursor-default' 
+        
+        
+        
+        
+      >
+         
+      </a>
+    </li>
+  
+        
       
     </ul>
   </div>
   <script>
     volantis.rightMenu = {};
     volantis.rightMenu.faicon = 'fa' || 'fa';
+    volantis.rightMenu.musicAlwaysShow = 'true' === 'true';
     
     
       volantis.rightMenu.defaultStyles = true;
@@ -3156,12 +3373,111 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1634399506545')
+    volantis.js('/js/rightMenu.js?time=1634458992772')
   </script>
 
 
 
 <!-- rightmenu要在darkmode之前（ToggleButton） darkmode要在comments之前（volantis.dark.push）-->
+
+  <script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "color-scheme";
+const rootElementDarkModeAttributeName = "color-scheme";
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+  getCustomDarkMode();
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+/**
+ * get target mode
+ */
+ const getCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  if(currentSetting=="dark"){
+    volantis.dark.mode="light";
+  }else{
+    volantis.dark.mode="dark";
+  }
+  // console.log(volantis.dark.mode)
+};
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+/**
+ * 暗黑模式触发器
+ */
+volantis.dark.toggle=()=>{
+  const mode = toggleCustomDarkMode();
+  applyCustomDarkModeSettings(mode);
+  // 使用 volantis.dark.push 方法传入volantis.dark.toggle回调函数 参见layout/_partial/scripts/global.ejs
+  volantis.dark.method.toggle.start();
+}
+/**
+ * bind event for toggle button
+ */
+
+function bindToggleButton() {
+  var btn= document.querySelectorAll("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn")
+  btn.forEach(function (e) {
+    volantis.dom.$(e).on('click',volantis.dark.toggle);
+  })
+}
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", ()=>{
+  volantis.requestAnimationFrame(bindToggleButton)
+});
+volantis.pjax.push(bindToggleButton);
+</script>
+
 
 
 
@@ -3170,19 +3486,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1634399506545")
+        volantis.js("/js/plugins/sites.js?time=1634458992772")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1634399506545")
+        volantis.js("/js/plugins/friends.js?time=1634458992772")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1634399506545")
+        volantis.js("/js/plugins/contributors.js?time=1634458992772")
       }
     
   };
@@ -3298,7 +3614,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<script src="/js/app.js?time=1634399506545.js"></script>
+<script src="/js/app.js?time=1634458992772.js"></script>
 
 
 <!-- optional -->
@@ -3311,7 +3627,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1634399506545");
+    return volantis.js("/js/search/hexo.js?time=1634458992772");
   }
 
   function loadSearchService() {
@@ -3558,7 +3874,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"达达的个人博客","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"达达","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"达达的个人博客"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/10/16/hello-world/","name":"Hello World"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Hello World","description":"","datePublished":"2021-10-16T14:07:51.800Z","dateModified":"2021-10-16T14:07:51.800Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/10/16/hello-world/"},"author":{"@type":"Person","name":"达达","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"达达的个人博客","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/10/16/hello-world/","wordCount":0,"image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"达达的个人博客","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"达达","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"达达的个人博客"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/10/17/SEATA/","name":""}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"","description":"","datePublished":"2021-10-16T16:44:41.903Z","dateModified":"2021-10-16T07:11:57.494Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/10/17/SEATA/"},"author":{"@type":"Person","name":"达达","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"达达的个人博客","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/10/17/SEATA/","wordCount":0,"image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->
