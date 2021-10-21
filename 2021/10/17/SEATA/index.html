@@ -20,23 +20,23 @@
   <meta content="达达的个人博客" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1634487972374" as="style">
+  <link rel="preload" href="/css/style.css?time=1634829056145" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/inkss/common@1/fonts/canva/SentyGoldenBell.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>达达的个人博客</title>
+  <title>分布式事务基础 - 达达的个人博客</title>
   <meta name="keywords" content="null">
-  <meta name="description" content="SEATA一、分布式事物基础1.CAP2.强一致性和弱一致性强一致性 系统中的某个数据被成功更新后，后续任何对该数据的读取操作都讲得到更新后的值；也成为原子一致性，线性一致性  两个要求: 任何一次读都能读到某个数据的最近一次写的数据 系统中的所有进程，看到的操作顺序，都和全局时钟下的顺序一致。  在任意时刻，所有节点的数据是一样的。例如，对于关系型数据库，要求更新过的数据能被后续的访问都能看到，">
+  <meta name="description" content="一、分布式事物基础1.CAP2.强一致性和弱一致性强一致性 系统中的某个数据被成功更新后，后续任何对该数据的读取操作都讲得到更新后的值；也成为原子一致性，线性一致性  两个要求: 任何一次读都能读到某个数据的最近一次写的数据 系统中的所有进程，看到的操作顺序，都和全局时钟下的顺序一致。  在任意时刻，所有节点的数据是一样的。例如，对于关系型数据库，要求更新过的数据能被后续的访问都能看到，这就是强一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="达达的个人博客">
+<meta property="og:title" content="分布式事务基础">
 <meta property="og:url" content="http://example.com/2021/10/17/SEATA/index.html">
 <meta property="og:site_name" content="达达的个人博客">
-<meta property="og:description" content="SEATA一、分布式事物基础1.CAP2.强一致性和弱一致性强一致性 系统中的某个数据被成功更新后，后续任何对该数据的读取操作都讲得到更新后的值；也成为原子一致性，线性一致性  两个要求: 任何一次读都能读到某个数据的最近一次写的数据 系统中的所有进程，看到的操作顺序，都和全局时钟下的顺序一致。  在任意时刻，所有节点的数据是一样的。例如，对于关系型数据库，要求更新过的数据能被后续的访问都能看到，">
+<meta property="og:description" content="一、分布式事物基础1.CAP2.强一致性和弱一致性强一致性 系统中的某个数据被成功更新后，后续任何对该数据的读取操作都讲得到更新后的值；也成为原子一致性，线性一致性  两个要求: 任何一次读都能读到某个数据的最近一次写的数据 系统中的所有进程，看到的操作顺序，都和全局时钟下的顺序一致。  在任意时刻，所有节点的数据是一样的。例如，对于关系型数据库，要求更新过的数据能被后续的访问都能看到，这就是强一">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-10-16T16:44:41.903Z">
-<meta property="article:modified_time" content="2021-10-17T14:33:57.845Z">
+<meta property="article:modified_time" content="2021-10-21T14:49:02.839Z">
 <meta property="article:author" content="达达">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
@@ -772,53 +772,34 @@ button {
 .cover-wrapper.focus .menu .list-h a:hover {
   background: var(--color-card);
 }
-.cover-wrapper.dock .top {
-  margin-bottom: 48px;
+.cover-wrapper.focus .menu {
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
 }
-.cover-wrapper.dock .menu {
+.cover-wrapper.focus .menu .list-h {
+  margin: 2px;
+}
+.cover-wrapper.focus .menu:hover {
   background: rgba(255,255,255,0.5);
-  position: absolute;
-  bottom: 0;
-  max-width: 100%;
-}
-.cover-wrapper.dock .menu .list-h {
-  flex-wrap: nowrap;
-  -webkit-flex-wrap: nowrap;
-  -khtml-flex-wrap: nowrap;
-  -moz-flex-wrap: nowrap;
-  -o-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  margin: 4px;
-}
-.cover-wrapper.dock .menu .list-h a+a {
-  margin-left: 4px;
-}
-@media screen and (max-width: 500px) {
-  .cover-wrapper.dock .menu .list-h {
-    overflow-x: scroll;
-  }
-  .cover-wrapper.dock .menu .list-h::-webkit-scrollbar {
-    height: 0;
-    width: 0;
-  }
-  .cover-wrapper.dock .menu .list-h::-webkit-scrollbar-track-piece {
-    background: transparent;
-  }
-  .cover-wrapper.dock .menu .list-h::-webkit-scrollbar-thumb {
-    background: #44d7b6;
-    cursor: pointer;
-    border-radius: 0;
-    -webkit-border-radius: 0;
-  }
-  .cover-wrapper.dock .menu .list-h::-webkit-scrollbar-thumb:hover {
-    background: #ff5722;
-  }
 }
 @supports (backdrop-filter: blur(20px)) {
-  .cover-wrapper.dock .menu {
+  .cover-wrapper.focus .menu:hover {
     background: rgba(255,255,255,0.5);
     backdrop-filter: saturate(200%) blur(20px);
   }
+}
+.cover-wrapper.focus .menu .list-h a {
+  margin: 2px;
+}
+.cover-wrapper.focus .menu .list-h a:hover {
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  background: var(--color-card);
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -1809,8 +1790,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1634487972374" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1634487972374"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1634829056145" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1634829056145"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2237,7 +2218,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <!-- Custom Files head end-->
 </head>
   <body itemscope itemtype="http://schema.org/WebPage">
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2505,7 +2486,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper post dock' style="display: none;">
+      <div id="half" class='cover-wrapper post focus' style="display: ;">
         
   <div class='cover-bg lazyload placeholder' data-bg="image/bg.jpg"></div>
 
@@ -2528,7 +2509,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
               
               active-action="action-v4getting-started">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg' alt="This is a picture without description" ><p>文档</p>
+              <img src='icon/book.png' alt="This is a picture without description" ><p>文档</p>
             </a>
           
         
@@ -2556,24 +2537,63 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   
-    <span hidden>
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
-    </span>
+    <div class='headimg-div'>
+      <a class='headimg-a' href="/" onclick="return false;" title="Click me!" >
+        <img itemprop="image" class='headimg' src='image/cat.png' alt="This is a picture without description" />
+      </a>
+    </div>
   
   <div class="article-meta" id="top">
     
     
     
-      <span hidden itemprop="name headline">
+      <h1 class="title" itemprop="name headline">
+        分布式事务基础
+      </h1>
+      <div class='new-meta-box'>
         
-      </span>
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    " class="lazyload" data-srcset="" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==<img itemprop="image" src="" alt="This is a picture without description" >
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-10-17T00:44:41+08:00">
+  <a class='notlink' href="/" onclick="return false;" title="Click me!" >
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年10月17日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
 
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="SEATA"><a href="#SEATA" class="headerlink" title="SEATA"></a>SEATA</h1><h2 id="一、分布式事物基础"><a href="#一、分布式事物基础" class="headerlink" title="一、分布式事物基础"></a>一、分布式事物基础</h2><div class="story post-story"><h3 id="1-CAP"><a href="#1-CAP" class="headerlink" title="1.CAP"></a>1.CAP</h3><h3 id="2-强一致性和弱一致性"><a href="#2-强一致性和弱一致性" class="headerlink" title="2.强一致性和弱一致性"></a>2.强一致性和弱一致性</h3><h4 id="强一致性"><a href="#强一致性" class="headerlink" title="强一致性"></a>强一致性</h4><blockquote>
+    <h2 id="一、分布式事物基础"><a href="#一、分布式事物基础" class="headerlink" title="一、分布式事物基础"></a>一、分布式事物基础</h2><div class="story post-story"><h3 id="1-CAP"><a href="#1-CAP" class="headerlink" title="1.CAP"></a>1.CAP</h3><h3 id="2-强一致性和弱一致性"><a href="#2-强一致性和弱一致性" class="headerlink" title="2.强一致性和弱一致性"></a>2.强一致性和弱一致性</h3><h4 id="强一致性"><a href="#强一致性" class="headerlink" title="强一致性"></a>强一致性</h4><blockquote>
 <p>系统中的某个数据被成功更新后，后续任何对该数据的读取操作都讲得到更新后的值；也成为<code>原子一致性</code>，<code>线性一致性</code></p>
 </blockquote>
 <h5 id="两个要求"><a href="#两个要求" class="headerlink" title="两个要求:"></a>两个要求:</h5><ul>
@@ -2805,10 +2825,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-10-17T22:33:57+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-10-21T22:49:02+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年10月17日</p>
+    <p>更新于：2021年10月21日</p>
   </a>
 </div>
 
@@ -2827,7 +2847,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/10/17/SEATA/&title= - 达达的个人博客&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/10/17/SEATA/&title=分布式事务基础 - 达达的个人博客&summary="
           
           >
           
@@ -2839,7 +2859,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/10/17/SEATA/&title= - 达达的个人博客&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/10/17/SEATA/&title=分布式事务基础 - 达达的个人博客&summary="
           
           >
           
@@ -2851,7 +2871,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/10/17/SEATA/&title= - 达达的个人博客&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/10/17/SEATA/&title=分布式事务基础 - 达达的个人博客&summary="
           
           >
           
@@ -2881,6 +2901,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
 
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/10/21/test/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>hello world</p>
+          <p class='content'>
+</p>
+        </a>
+      
+      
+    </div>
   
   <!-- Custom Files postEnd begin-->
   
@@ -2977,8 +3008,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="分布式事务基础";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2987,14 +3018,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.add("show");
+    l_header.classList.remove("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="none";
-      cover_wrapper.style.display="none";
+      cover_wrapper.id="half";
+      cover_wrapper.style.display="";
       scroll_down.style.display="none";
     
   
@@ -3092,8 +3123,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1634487972374')
-      volantis.js('/js/message.js?time=1634487972374', () => {
+      volantis.css('/css/message.css?time=1634829056145')
+      volantis.js('/js/message.js?time=1634829056145', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3138,8 +3169,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1634487972374')
-      volantis.js('/js/message.js?time=1634487972374', () => {
+      volantis.css('/css/message.css?time=1634829056145')
+      volantis.js('/js/message.js?time=1634829056145', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3198,8 +3229,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1634487972374')
-      volantis.js('/js/message.js?time=1634487972374', () => {
+      volantis.css('/css/message.css?time=1634829056145')
+      volantis.js('/js/message.js?time=1634829056145', () => {
         hideMessage(done);
       });
     } else {
@@ -3431,7 +3462,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1634487972374')
+    volantis.js('/js/rightMenu.js?time=1634829056145')
   </script>
 
 
@@ -3544,19 +3575,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1634487972374")
+        volantis.js("/js/plugins/sites.js?time=1634829056145")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1634487972374")
+        volantis.js("/js/plugins/friends.js?time=1634829056145")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1634487972374")
+        volantis.js("/js/plugins/contributors.js?time=1634829056145")
       }
     
   };
@@ -3672,7 +3703,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1634487972374.js"></script>
+<script src="/js/app.js?time=1634829056145.js"></script>
 
 
 <!-- optional -->
@@ -3685,7 +3716,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1634487972374");
+    return volantis.js("/js/search/hexo.js?time=1634829056145");
   }
 
   function loadSearchService() {
@@ -3932,7 +3963,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"达达的个人博客","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"达达","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"达达的个人博客"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/10/17/SEATA/","name":""}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"","description":"","datePublished":"2021-10-16T16:44:41.903Z","dateModified":"2021-10-17T14:33:57.845Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/10/17/SEATA/"},"author":{"@type":"Person","name":"达达","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"达达的个人博客","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/10/17/SEATA/","wordCount":0,"image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"达达的个人博客","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"达达","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"达达的个人博客"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/10/17/SEATA/","name":"分布式事务基础"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"分布式事务基础","description":"","datePublished":"2021-10-16T16:44:41.903Z","dateModified":"2021-10-21T14:49:02.839Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/10/17/SEATA/"},"author":{"@type":"Person","name":"达达","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"达达的个人博客","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/10/17/SEATA/","wordCount":0,"image":{"@type":"ImageObject","url":"image/cat.png","width":1024,"height":768}}]</script>
 
 
 <!-- more -->
