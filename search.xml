@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title>hello world</title>
-      <link href="/2021/10/21/test/"/>
-      <url>/2021/10/21/test/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>分布式事务基础</title>
       <link href="/2021/10/17/SEATA/"/>
       <url>/2021/10/17/SEATA/</url>
